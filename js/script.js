@@ -12,7 +12,8 @@ function getBasePath() {
     "/intencje/",
     "/kancelaria/",
     "/aktualnosci/",
-    "/historia-parafii/"
+    "/historia-parafii/",
+    "/polityka-prywatnosci/"
   ];
 
   const isSubpage = subfolders.some((folder) => path.includes(folder));

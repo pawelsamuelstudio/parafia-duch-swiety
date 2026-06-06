@@ -43,7 +43,6 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
-  padding-top: 96px;
 }
 
 a {
@@ -57,14 +56,15 @@ img {
   display: block;
 }
 
-/* GÓRNY PASEK — STAŁY */
+/* GÓRNY PASEK */
 
 #header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   z-index: 5000;
+  margin: 0;
+  padding: 0;
 }
 
 .site-header {
@@ -74,6 +74,8 @@ img {
   position: relative;
   z-index: 5000;
   box-shadow: 0 2px 14px rgba(20, 33, 61, 0.08);
+  margin: 0;
+  padding: 0;
 }
 
 .header-container {
@@ -196,22 +198,23 @@ img {
   transform: translateY(-12px) rotate(-45deg);
 }
 
-/* WITRAŻ POD MENU */
+/* WITRAŻ POD MENU — BEZ ODSTĘPU */
 
 .hero-image {
   width: 100%;
   margin: 0;
   padding: 0;
   line-height: 0;
+  display: block;
   background: var(--white);
 }
 
 .hero-image img {
+  display: block;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
-  display: block;
 }
 
 /* GŁÓWNA TREŚĆ */
@@ -692,7 +695,7 @@ img {
   margin-top: 10px;
 }
 
-/* PODSTRONA AKTUALNOŚCI — KWADRATY */
+/* PODSTRONA AKTUALNOŚCI */
 
 .actual-news-section {
   margin-top: 10px;
@@ -930,12 +933,8 @@ img {
 /* TABLETY I MNIEJSZE LAPTOPY */
 
 @media (max-width: 1050px) {
-  body {
-    padding-top: 112px;
-  }
-
   html {
-    scroll-padding-top: 122px;
+    scroll-padding-top: 120px;
   }
 
   .menu-toggle {
@@ -1050,12 +1049,8 @@ img {
 /* SMARTFONY */
 
 @media (max-width: 600px) {
-  body {
-    padding-top: 128px;
-  }
-
   html {
-    scroll-padding-top: 138px;
+    scroll-padding-top: 130px;
   }
 
   .header-container {

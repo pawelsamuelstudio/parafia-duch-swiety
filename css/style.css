@@ -97,10 +97,10 @@ img {
 
 .parish-name span {
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.8px;
   color: var(--brown);
 }
 
@@ -764,6 +764,58 @@ img {
   line-height: 1.25;
 }
 
+.home-news-grid {
+  margin-top: 10px;
+}
+
+/* HISTORIA PARAFII */
+
+.historia-card {
+  border-left: 6px solid var(--gold);
+}
+
+.historia-card h3 {
+  color: var(--navy-dark);
+  font-size: 22px;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+.historia-card h4 {
+  color: var(--navy-dark);
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.history-timeline p {
+  border-left: 4px solid var(--gold);
+  padding-left: 16px;
+  margin-bottom: 0;
+}
+
+.clergy-list {
+  margin: 12px 0 20px 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.clergy-list li {
+  margin-bottom: 6px;
+}
+
+.clergy-columns {
+  columns: 2;
+  column-gap: 36px;
+}
+
 /* STOPKA */
 
 .site-footer {
@@ -989,6 +1041,10 @@ img {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+
+  .clergy-columns {
+    columns: 1;
+  }
 }
 
 /* SMARTFONY */
@@ -1012,8 +1068,8 @@ img {
   }
 
   .parish-name span {
-    font-size: 10px;
-    letter-spacing: 1.1px;
+    font-size: 12px;
+    letter-spacing: 1.2px;
   }
 
   .parish-name strong {

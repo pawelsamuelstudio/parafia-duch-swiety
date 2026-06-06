@@ -31,7 +31,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 110px;
 }
 
 html,
@@ -43,7 +43,7 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
-  padding-top: 86px;
+  padding-top: 96px;
 }
 
 a {
@@ -931,11 +931,11 @@ img {
 
 @media (max-width: 1050px) {
   body {
-    padding-top: 84px;
+    padding-top: 112px;
   }
 
   html {
-    scroll-padding-top: 96px;
+    scroll-padding-top: 122px;
   }
 
   .menu-toggle {
@@ -1051,11 +1051,11 @@ img {
 
 @media (max-width: 600px) {
   body {
-    padding-top: 82px;
+    padding-top: 128px;
   }
 
   html {
-    scroll-padding-top: 92px;
+    scroll-padding-top: 138px;
   }
 
   .header-container {

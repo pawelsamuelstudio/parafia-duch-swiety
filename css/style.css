@@ -4,7 +4,6 @@
   --brown: #3b2a1d;
   --gold: #c9972b;
   --blue: #2477b3;
-  --red: #b6432c;
   --green: #5f8f58;
   --violet: #7f6aa3;
 
@@ -16,13 +15,23 @@
   --tile-ogloszenia: #fff7e8;
   --tile-intencje: #eef7fd;
   --tile-kancelaria: #f5f0fb;
-  --tile-aktualnosci: #eef8f0;
+
+  --soft-cream: #faf7f1;
+  --soft-gold: #fffaf0;
+  --shadow: 0 8px 24px rgba(20, 33, 61, 0.06);
 }
+
+/* RESET */
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 html,
@@ -34,6 +43,7 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   color: var(--text);
   line-height: 1.6;
+  padding-top: 86px;
 }
 
 a {
@@ -47,32 +57,42 @@ img {
   display: block;
 }
 
-/* GÓRNY PASEK */
+/* GÓRNY PASEK — STAŁY */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5000;
+}
 
 .site-header {
+  width: 100%;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   position: relative;
-  z-index: 1000;
-  box-shadow: 0 2px 14px rgba(20, 33, 61, 0.06);
+  z-index: 5000;
+  box-shadow: 0 2px 14px rgba(20, 33, 61, 0.08);
 }
 
 .header-container {
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 14px 28px;
+  max-width: none;
+  margin: 0;
+  padding: 14px 42px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 28px;
+  justify-content: flex-start;
+  gap: 34px;
+  position: relative;
 }
 
 .parish-name {
   display: flex;
   flex-direction: column;
   color: var(--navy);
-  min-width: 230px;
+  min-width: 260px;
 }
 
 .parish-name span {
@@ -86,10 +106,14 @@ img {
 
 .parish-name strong {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 23px;
+  font-size: 24px;
   font-weight: normal;
   line-height: 1.15;
   color: var(--navy);
+}
+
+#menu {
+  margin-left: auto;
 }
 
 /* MENU */
@@ -97,35 +121,32 @@ img {
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   list-style: none;
 }
 
 .main-nav a {
   display: block;
-  padding: 11px 13px;
+  padding: 12px 15px;
   border-radius: 5px;
   color: var(--navy-dark);
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   background: transparent;
   box-shadow: none;
+  white-space: nowrap;
   transition:
     background 0.2s ease,
     color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-/* Brak stałego podświetlenia aktywnej strony */
-
 .main-nav a.active {
   background: transparent;
   color: var(--navy-dark);
   box-shadow: none;
 }
-
-/* Ten sam granat na hover dla wszystkich, także active */
 
 .main-nav a:hover,
 .main-nav a:focus,
@@ -140,26 +161,31 @@ img {
 
 .menu-toggle {
   display: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  background: var(--white);
-  border-radius: 5px;
+  width: 58px;
+  height: 58px;
+  border: none;
+  background: transparent;
+  border-radius: 0;
   cursor: pointer;
-  padding: 9px;
+  padding: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .menu-toggle span {
   display: block;
-  height: 2px;
   width: 100%;
-  background: var(--navy);
-  margin: 6px 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  height: 5px;
+  background: var(--navy-dark);
+  border-radius: 4px;
+  margin: 7px 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(12px) rotate(45deg);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -167,10 +193,10 @@ img {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-12px) rotate(-45deg);
 }
 
-/* WITRAŻ BEZPOŚREDNIO POD MENU */
+/* WITRAŻ POD MENU */
 
 .hero-image {
   width: 100%;
@@ -188,7 +214,7 @@ img {
   display: block;
 }
 
-/* TREŚĆ */
+/* GŁÓWNA TREŚĆ */
 
 .page-content {
   max-width: 1280px;
@@ -220,7 +246,7 @@ img {
   font-size: clamp(17px, 2vw, 20px);
 }
 
-/* KAFELKI */
+/* KAFELKI NA STRONIE GŁÓWNEJ */
 
 .tiles-section {
   margin-top: 10px;
@@ -228,19 +254,22 @@ img {
 
 .tiles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
 }
 
 .tile {
-  min-height: 150px;
+  aspect-ratio: 1 / 1;
+  width: 100%;
   border: 1px solid var(--border);
-  border-top: 6px solid transparent;
-  border-radius: 8px;
-  padding: 26px;
+  border-top: 7px solid transparent;
+  border-radius: 12px;
+  padding: 28px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 18px;
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
   transition:
@@ -257,9 +286,15 @@ img {
 .tile h2 {
   color: var(--navy-dark);
   font-family: "Roboto", Arial, sans-serif;
-  font-size: clamp(22px, 2vw, 28px);
+  font-size: clamp(23px, 2.2vw, 31px);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.2;
+}
+
+.tile-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
 
 .tile-ogloszenia {
@@ -277,11 +312,6 @@ img {
   border-top-color: var(--violet);
 }
 
-.tile-aktualnosci {
-  background: var(--tile-aktualnosci);
-  border-top-color: var(--green);
-}
-
 .tile-ogloszenia:hover {
   border-color: var(--gold);
 }
@@ -294,8 +324,444 @@ img {
   border-color: var(--violet);
 }
 
-.tile-aktualnosci:hover {
-  border-color: var(--green);
+/* SEKCJE STRONY GŁÓWNEJ */
+
+.home-section {
+  margin-top: 56px;
+}
+
+.section-heading {
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--navy-dark);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 760px;
+  margin-top: 8px;
+}
+
+/* LITURGIA */
+
+.liturgy-box {
+  background: var(--soft-cream);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--gold);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.liturgy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.liturgy-item h3 {
+  color: var(--navy-dark);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.liturgy-item p,
+.liturgy-item li {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.liturgy-item ul {
+  list-style: none;
+}
+
+/* AKTUALNOŚCI NA STRONIE GŁÓWNEJ */
+
+.news-section {
+  padding-top: 8px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.news-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--green);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  min-height: 220px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(20, 33, 61, 0.10);
+}
+
+.news-card time {
+  display: block;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.news-card h3 {
+  color: var(--navy-dark);
+  font-size: 21px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.news-card a {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.news-card a:hover {
+  text-decoration: underline;
+}
+
+.section-button {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.button-link {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  padding: 13px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button-link:hover,
+.button-link:focus {
+  background: var(--navy-dark);
+  transform: translateY(-2px);
+}
+
+/* PODSTRONY */
+
+.subpage-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 0.9fr);
+  gap: 32px;
+}
+
+.subpage-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.subpage-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content-card,
+.side-card,
+.photo-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.content-card h2,
+.side-card h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--navy-dark);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.content-card p,
+.side-card p,
+.parish-address {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.content-card strong,
+.side-card strong,
+.parish-address strong {
+  color: var(--navy-dark);
+}
+
+.content-card a,
+.side-card a {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.content-card a:hover,
+.side-card a:hover {
+  text-decoration: underline;
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.info-list li {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  padding-left: 18px;
+  border-left: 4px solid var(--gold);
+}
+
+.warning-card {
+  border-top: 6px solid var(--gold);
+  background: var(--soft-gold);
+}
+
+.parish-address {
+  font-style: normal;
+}
+
+.photo-placeholder {
+  min-height: 260px;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  background: var(--soft-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  padding: 24px;
+}
+
+.subpage-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+/* KANCELARIA */
+
+.kancelaria-layout {
+  align-items: start;
+}
+
+.kancelaria-highlight {
+  border-left: 6px solid var(--gold);
+  background: var(--soft-cream);
+}
+
+.large-info {
+  font-size: 20px;
+  color: var(--navy-dark);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contact-item {
+  border-left: 4px solid var(--gold);
+  padding-left: 16px;
+}
+
+.contact-item h3 {
+  color: var(--navy-dark);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.contact-item p {
+  margin-bottom: 4px;
+}
+
+.contact-item a {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.notice-card {
+  border-left: 6px solid var(--blue);
+  background: #f5fbff;
+}
+
+.important-phone {
+  margin: 10px 0 18px;
+}
+
+.important-phone a {
+  display: inline-block;
+  color: var(--navy-dark);
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* OGŁOSZENIA */
+
+.ogloszenia-card {
+  border-left: 6px solid var(--gold);
+}
+
+.announcement-date {
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.announcement-content {
+  margin-top: 18px;
+}
+
+.announcement-content p {
+  margin-bottom: 16px;
+}
+
+.announcement-content ol,
+.announcement-content ul {
+  margin: 16px 0 0 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.announcement-content li {
+  margin-bottom: 10px;
+}
+
+/* INTENCJE */
+
+.intencje-card {
+  border-left: 6px solid var(--blue);
+}
+
+.announcement-content h3 {
+  color: var(--navy-dark);
+  font-size: 21px;
+  margin-top: 26px;
+  margin-bottom: 8px;
+}
+
+.announcement-content h3:first-of-type {
+  margin-top: 10px;
+}
+
+/* PODSTRONA AKTUALNOŚCI — KWADRATY */
+
+.actual-news-section {
+  margin-top: 10px;
+}
+
+.actual-news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.actual-news-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.actual-news-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(20, 33, 61, 0.12);
+}
+
+.actual-news-tile a {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.actual-news-photo-placeholder {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background: var(--soft-cream);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+.actual-news-image {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  background: var(--soft-cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.actual-news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.actual-news-tile h2 {
+  min-height: 92px;
+  padding: 20px;
+  color: var(--navy-dark);
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: clamp(20px, 1.8vw, 25px);
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 /* STOPKA */
@@ -303,53 +769,138 @@ img {
 .site-footer {
   background: var(--navy-dark);
   color: var(--white);
-  text-align: center;
-  padding: 22px 20px;
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 14px;
 }
 
-.site-footer p {
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 34px 28px 24px;
+}
+
+.footer-brand {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.footer-brand span {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: #d8b76a;
   margin-bottom: 4px;
 }
 
-.site-footer p:last-child {
-  margin-bottom: 0;
+.footer-brand strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.footer-brand p {
+  margin-top: 4px;
+  color: #d8dde8;
+  font-size: 14px;
+}
+
+.footer-nav {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 18px 0;
+  margin-bottom: 18px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.footer-nav a {
+  color: #f5f7fb;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: #d8b76a;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #d8dde8;
+  font-size: 13px;
+}
+
+.footer-bottom p {
+  margin: 0;
 }
 
 /* MNIEJSZE LAPTOPY */
 
 @media (max-width: 1150px) {
   .header-container {
-    padding: 14px 22px;
-    gap: 18px;
+    padding: 14px 24px;
+    gap: 20px;
+  }
+
+  .main-nav ul {
+    gap: 5px;
   }
 
   .main-nav a {
-    padding: 10px 9px;
-    font-size: 14px;
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+
+  .parish-name {
+    min-width: 230px;
   }
 
   .parish-name strong {
-    font-size: 20px;
+    font-size: 21px;
   }
 
-  .tiles {
+  .liturgy-grid,
+  .news-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* TABLETY I SMARTFONY */
+/* TABLETY I MNIEJSZE LAPTOPY */
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
+  body {
+    padding-top: 84px;
+  }
+
+  html {
+    scroll-padding-top: 96px;
+  }
+
   .menu-toggle {
     display: block;
+    margin-left: auto;
+  }
+
+  #menu {
+    position: static;
+    margin-left: 0;
   }
 
   .main-nav {
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -365,16 +916,17 @@ img {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 10px 22px 18px;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 12px 22px 20px;
   }
 
   .main-nav a {
-    padding: 14px 16px;
+    padding: 18px 20px;
     border-radius: 0;
     border-bottom: 1px solid var(--border);
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .main-nav a.active {
@@ -400,26 +952,78 @@ img {
   .welcome-content {
     max-width: 100%;
   }
+
+  .subpage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kancelaria-layout .subpage-sidebar {
+    order: -1;
+  }
+}
+
+/* TABLETY */
+
+@media (max-width: 900px) {
+  .actual-news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .tiles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tile {
+    aspect-ratio: auto;
+    min-height: 150px;
+  }
+
+  .liturgy-grid,
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* SMARTFONY */
 
 @media (max-width: 600px) {
+  body {
+    padding-top: 82px;
+  }
+
+  html {
+    scroll-padding-top: 92px;
+  }
+
   .header-container {
     padding: 12px 16px;
   }
 
   .parish-name {
     min-width: 0;
+    max-width: calc(100% - 74px);
   }
 
   .parish-name span {
     font-size: 10px;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.1px;
   }
 
   .parish-name strong {
-    font-size: 17px;
+    font-size: 23px;
+    line-height: 1.15;
+  }
+
+  .menu-toggle {
+    width: 58px;
+    height: 58px;
   }
 
   .page-content {
@@ -430,13 +1034,98 @@ img {
     margin-bottom: 30px;
   }
 
-  .tiles {
+  .welcome-content h1 {
+    font-size: 34px;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+
+  .welcome-content p {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .tiles,
+  .liturgy-grid,
+  .news-grid,
+  .actual-news-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
 
   .tile {
-    min-height: 118px;
+    aspect-ratio: auto;
+    min-height: 145px;
+    padding: 24px 20px;
+  }
+
+  .tile h2 {
+    font-size: 25px;
+    line-height: 1.2;
+  }
+
+  .tile-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .actual-news-tile h2 {
+    min-height: auto;
+    font-size: 22px;
+  }
+
+  .home-section {
+    margin-top: 44px;
+  }
+
+  .liturgy-box {
     padding: 24px;
+  }
+
+  .news-card {
+    padding: 22px;
+  }
+
+  .content-card,
+  .side-card,
+  .photo-box {
+    padding: 22px;
+  }
+
+  .content-card p,
+  .side-card p,
+  .parish-address,
+  .info-list li {
+    font-size: 16px;
+  }
+
+  .large-info {
+    font-size: 18px;
+  }
+
+  .contact-item a {
+    font-size: 17px;
+  }
+
+  .important-phone a {
+    font-size: 21px;
+  }
+
+  .photo-placeholder {
+    min-height: 200px;
+  }
+
+  .footer-container {
+    padding: 30px 20px 24px;
+  }
+
+  .footer-nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-nav a {
+    font-size: 16px;
   }
 }

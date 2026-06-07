@@ -33,45 +33,18 @@ function loadHeader() {
   fetch(basePath + "header.html")
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Nie udało się wczytać pliku header.html");
+        throw new Error("Nie udało się wczytać header.html");
       }
 
       return response.text();
     })
     .then((html) => {
       headerContainer.innerHTML = html;
-      loadMenu();
-      fixInternalLinks();
-    })
-    .catch((error) => {
-      console.error("Błąd ładowania nagłówka:", error);
-    });
-}
-
-function loadMenu() {
-  const menuContainer = document.getElementById("menu");
-
-  if (!menuContainer) {
-    return;
-  }
-
-  const basePath = getBasePath();
-
-  fetch(basePath + "menu.html")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Nie udało się wczytać pliku menu.html");
-      }
-
-      return response.text();
-    })
-    .then((html) => {
-      menuContainer.innerHTML = html;
       fixInternalLinks();
       setupMobileMenu();
     })
     .catch((error) => {
-      console.error("Błąd ładowania menu:", error);
+      console.error("Błąd ładowania headera:", error);
     });
 }
 
@@ -87,7 +60,7 @@ function loadFooter() {
   fetch(basePath + "footer.html")
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Nie udało się wczytać pliku footer.html");
+        throw new Error("Nie udało się wczytać footer.html");
       }
 
       return response.text();
@@ -97,7 +70,7 @@ function loadFooter() {
       fixInternalLinks();
     })
     .catch((error) => {
-      console.error("Błąd ładowania stopki:", error);
+      console.error("Błąd ładowania footera:", error);
     });
 }
 
@@ -160,7 +133,7 @@ function scrollToHashAfterLoad() {
       target.getBoundingClientRect().top +
       window.pageYOffset -
       headerHeight -
-      20;
+      18;
 
     window.scrollTo({
       top: targetPosition,

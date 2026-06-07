@@ -31,7 +31,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 90px;
 }
 
 html,
@@ -56,7 +56,7 @@ img {
   display: block;
 }
 
-/* GÓRNY PASEK */
+/* HEADER / GÓRNY PASEK */
 
 #header {
   position: sticky;
@@ -71,72 +71,75 @@ img {
   width: 100%;
   background: var(--white);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 14px rgba(20, 33, 61, 0.08);
   position: relative;
   z-index: 5000;
-  box-shadow: 0 2px 14px rgba(20, 33, 61, 0.08);
   margin: 0;
   padding: 0;
 }
 
 .header-container {
   width: 100%;
-  max-width: none;
   margin: 0;
-  padding: 14px 42px;
+  padding: 12px 36px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 34px;
+  gap: 28px;
   position: relative;
+  overflow: visible;
 }
 
 .parish-name {
   display: flex;
   flex-direction: column;
   color: var(--navy);
-  min-width: 260px;
+  min-width: 250px;
+  flex-shrink: 0;
 }
 
 .parish-name span {
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.7px;
   color: var(--brown);
+  line-height: 1.1;
+  margin-bottom: 2px;
 }
 
 .parish-name strong {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: normal;
-  line-height: 1.15;
+  line-height: 1.12;
   color: var(--navy);
 }
 
-#menu {
+/* MENU DESKTOP */
+
+.main-nav {
   margin-left: auto;
 }
-
-/* MENU */
 
 .main-nav ul {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
   list-style: none;
 }
 
 .main-nav a {
   display: block;
-  padding: 12px 15px;
+  padding: 10px 12px;
   border-radius: 5px;
   color: var(--navy-dark);
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   background: transparent;
-  box-shadow: none;
   white-space: nowrap;
   transition:
     background 0.2s ease,
@@ -144,16 +147,8 @@ img {
     box-shadow 0.2s ease;
 }
 
-.main-nav a.active {
-  background: transparent;
-  color: var(--navy-dark);
-  box-shadow: none;
-}
-
 .main-nav a:hover,
-.main-nav a:focus,
-.main-nav a.active:hover,
-.main-nav a.active:focus {
+.main-nav a:focus {
   background: var(--navy);
   color: var(--white);
   box-shadow: 0 4px 12px rgba(20, 33, 61, 0.18);
@@ -163,31 +158,36 @@ img {
 
 .menu-toggle {
   display: none;
-  width: 58px;
-  height: 58px;
-  border: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
   background: transparent;
   border-radius: 0;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px;
   margin-left: auto;
   flex-shrink: 0;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .menu-toggle span {
   display: block;
-  width: 100%;
-  height: 5px;
+  width: 34px;
+  height: 4px;
+  margin: 3.5px 0;
   background: var(--navy-dark);
-  border-radius: 4px;
-  margin: 7px 0;
+  border-radius: 8px;
+  flex-shrink: 0;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: translateY(12px) rotate(45deg);
+  transform: translateY(11px) rotate(45deg);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -195,10 +195,10 @@ img {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: translateY(-12px) rotate(-45deg);
+  transform: translateY(-11px) rotate(-45deg);
 }
 
-/* WITRAŻ POD MENU — BEZ ODSTĘPU */
+/* WITRAŻ POD MENU */
 
 .hero-image {
   width: 100%;
@@ -267,12 +267,12 @@ img {
   border: 1px solid var(--border);
   border-top: 7px solid transparent;
   border-radius: 12px;
-  padding: 28px;
+  padding: 28px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 22px;
   text-align: center;
   font-family: "Roboto", Arial, sans-serif;
   transition:
@@ -286,18 +286,20 @@ img {
   box-shadow: 0 10px 26px rgba(20, 33, 61, 0.12);
 }
 
+.tile-icon {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 .tile h2 {
   color: var(--navy-dark);
   font-family: "Roboto", Arial, sans-serif;
   font-size: clamp(23px, 2.2vw, 31px);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
-}
-
-.tile-icon {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
 }
 
 .tile-ogloszenia {
@@ -352,6 +354,21 @@ img {
   margin-top: 8px;
 }
 
+/* IKONY WEWNĄTRZ PÓL LITURGII I CZYTAŃ */
+
+.section-box-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.section-box-icon {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  display: block;
+}
+
 /* LITURGIA */
 
 .liturgy-box {
@@ -386,6 +403,50 @@ img {
   list-style: none;
 }
 
+/* CZYTANIA NA DZIŚ */
+
+.daily-readings-box {
+  background: var(--soft-cream);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--gold);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.readings-date {
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.readings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.reading-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+}
+
+.reading-item h3 {
+  color: var(--navy-dark);
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.reading-item p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 /* AKTUALNOŚCI NA STRONIE GŁÓWNEJ */
 
 .news-section {
@@ -406,7 +467,9 @@ img {
   padding: 24px;
   box-shadow: var(--shadow);
   min-height: 220px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .news-card:hover {
@@ -457,7 +520,9 @@ img {
   padding: 13px 24px;
   border-radius: 6px;
   font-weight: 700;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .button-link:hover,
@@ -819,6 +884,23 @@ img {
   column-gap: 36px;
 }
 
+/* POLITYKA PRYWATNOŚCI */
+
+.privacy-card {
+  border-left: 6px solid var(--navy);
+}
+
+.privacy-list {
+  margin: 12px 0 0 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.privacy-list li {
+  margin-bottom: 8px;
+}
+
 /* STOPKA */
 
 .site-footer {
@@ -902,49 +984,69 @@ img {
 /* MNIEJSZE LAPTOPY */
 
 @media (max-width: 1150px) {
-  .header-container {
-    padding: 14px 24px;
-    gap: 20px;
-  }
-
-  .main-nav ul {
-    gap: 5px;
-  }
-
-  .main-nav a {
-    padding: 10px 8px;
-    font-size: 16px;
-  }
-
-  .parish-name {
-    min-width: 230px;
-  }
-
-  .parish-name strong {
-    font-size: 21px;
+  .tile-icon,
+  .section-box-icon {
+    width: 118px;
+    height: 118px;
   }
 
   .liturgy-grid,
-  .news-grid {
+  .news-grid,
+  .readings-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* TABLETY I MNIEJSZE LAPTOPY */
+/* MENU MOBILNE / MNIEJSZE EKRANY */
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
   html {
-    scroll-padding-top: 120px;
+    scroll-padding-top: 72px;
+  }
+
+  .header-container {
+    min-height: 68px;
+    padding: 6px 18px;
+    gap: 12px;
+  }
+
+  .parish-name {
+    min-width: 0;
+    max-width: calc(100% - 58px);
+  }
+
+  .parish-name span {
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 1.2px;
+    margin-bottom: 2px;
+  }
+
+  .parish-name strong {
+    font-size: 18px;
+    line-height: 1.05;
   }
 
   .menu-toggle {
-    display: block;
-    margin-left: auto;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    padding: 5px;
   }
 
-  #menu {
-    position: static;
-    margin-left: 0;
+  .menu-toggle span {
+    width: 34px;
+    height: 4px;
+    margin: 3.5px 0;
+    border-radius: 6px;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
   }
 
   .main-nav {
@@ -953,10 +1055,12 @@ img {
     left: 0;
     right: 0;
     width: 100%;
+    margin-left: 0;
     background: var(--white);
     border-bottom: 1px solid var(--border);
     display: none;
-    box-shadow: 0 10px 20px rgba(20, 33, 61, 0.08);
+    box-shadow: 0 10px 22px rgba(20, 33, 61, 0.12);
+    z-index: 6000;
   }
 
   .main-nav.open {
@@ -964,36 +1068,28 @@ img {
   }
 
   .main-nav ul {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    max-width: none;
     width: 100%;
     margin: 0;
-    padding: 12px 22px 20px;
+    padding: 8px 18px 16px;
   }
 
   .main-nav a {
-    padding: 18px 20px;
-    border-radius: 0;
+    display: block;
+    padding: 13px 16px;
     border-bottom: 1px solid var(--border);
-    font-size: 20px;
-  }
-
-  .main-nav a.active {
-    background: transparent;
-    color: var(--navy-dark);
-    box-shadow: none;
     border-radius: 0;
+    font-size: 17px;
+    color: var(--navy-dark);
   }
 
   .main-nav a:hover,
-  .main-nav a:focus,
-  .main-nav a.active:hover,
-  .main-nav a.active:focus {
+  .main-nav a:focus {
     background: var(--navy);
     color: var(--white);
-    box-shadow: 0 4px 12px rgba(20, 33, 61, 0.18);
   }
 
   .page-content {
@@ -1029,11 +1125,18 @@ img {
 
   .tile {
     aspect-ratio: auto;
-    min-height: 150px;
+    min-height: 180px;
+  }
+
+  .tile-icon,
+  .section-box-icon {
+    width: 108px;
+    height: 108px;
   }
 
   .liturgy-grid,
-  .news-grid {
+  .news-grid,
+  .readings-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1050,31 +1153,52 @@ img {
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 130px;
+    scroll-padding-top: 68px;
   }
 
   .header-container {
-    padding: 12px 16px;
+    min-height: 64px;
+    padding: 5px 16px 5px 20px;
   }
 
   .parish-name {
-    min-width: 0;
-    max-width: calc(100% - 74px);
+    max-width: calc(100% - 54px);
   }
 
   .parish-name span {
-    font-size: 12px;
-    letter-spacing: 1.2px;
+    font-size: 9.5px;
+    letter-spacing: 1.1px;
+    margin-bottom: 2px;
   }
 
   .parish-name strong {
-    font-size: 23px;
-    line-height: 1.15;
+    font-size: 17px;
+    line-height: 1.04;
   }
 
   .menu-toggle {
-    width: 58px;
-    height: 58px;
+    width: 42px;
+    height: 42px;
+    padding: 5px;
+  }
+
+  .menu-toggle span {
+    width: 32px;
+    height: 4px;
+    margin: 3px 0;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  .main-nav a {
+    font-size: 17px;
+    padding: 13px 16px;
   }
 
   .page-content {
@@ -1099,25 +1223,31 @@ img {
   .tiles,
   .liturgy-grid,
   .news-grid,
-  .actual-news-grid {
+  .actual-news-grid,
+  .readings-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
   .tile {
     aspect-ratio: auto;
-    min-height: 145px;
+    min-height: 170px;
     padding: 24px 20px;
+  }
+
+  .tile-icon,
+  .section-box-icon {
+    width: 96px;
+    height: 96px;
+  }
+
+  .section-box-icon-wrap {
+    margin-bottom: 22px;
   }
 
   .tile h2 {
     font-size: 25px;
     line-height: 1.2;
-  }
-
-  .tile-icon {
-    width: 46px;
-    height: 46px;
   }
 
   .actual-news-tile h2 {
@@ -1129,8 +1259,13 @@ img {
     margin-top: 44px;
   }
 
-  .liturgy-box {
+  .liturgy-box,
+  .daily-readings-box {
     padding: 24px;
+  }
+
+  .reading-item {
+    padding: 20px;
   }
 
   .news-card {
